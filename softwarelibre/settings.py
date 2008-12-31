@@ -77,4 +77,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'registration',
 )
+
+#Registration Settings
+ACCOUNT_ACTIVATION_DAYS = 3
