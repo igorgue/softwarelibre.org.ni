@@ -15,5 +15,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
      (r'^admin/(.*)', admin.site.root),
      (r'^cuentas/', include('apps.registration.urls')),
-     (r'^planet/', include('apps.planet.urls')),
+     (r'^planet/', include('apps.feedjack.urls')),
 )
