@@ -1,0 +1,2 @@
+export PYTHONPATH=${PYTHONPATH}:/home/fitoria/code/softwarelibre.org.ni/
+
