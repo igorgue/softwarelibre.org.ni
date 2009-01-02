@@ -18,6 +18,8 @@ class FeedItem(models.Model):
     guid = models.CharField(max_length = 500, unique = True, db_index = True)
 
     class Meta:
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
         ordering = ("-date_modified",)
 
     def __unicode__(self):

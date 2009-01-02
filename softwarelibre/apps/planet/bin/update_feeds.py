@@ -26,10 +26,10 @@ def update_feeds(verbose=False):
             if not guid:
                 guid = link
 
-            if hasattr(entry, "summary"):
-                content = entry.summary
-            elif hasattr(entry, "content"):
+            if hasattr(entry, "content"):
                 content = entry.content[0].value
+            elif hasattr(entry, "summary"):
+                content = entry.summary
             elif hasattr(entry, "description"):
                 content = entry.description
             else:
