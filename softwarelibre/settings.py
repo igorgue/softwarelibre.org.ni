@@ -78,7 +78,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'apps.registration',
-    'apps.feedjack',
+    'apps.planet',
 )
 
 #Registration Settings
