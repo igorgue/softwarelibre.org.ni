@@ -3,6 +3,7 @@
 1. Introducción.
 2. Autores.
 3. TODO
+4. Notas
 
 ---------------- 1. Introducción -----------------------------
 
@@ -16,4 +17,9 @@ Adolfo Jurgen Fitoria Escobar <adolfo@fitoria.net>
 
 ---------------- 3. TODO ---------------------------------
 Todo falta por hacer.
+
+---------------- 4. Notas ---------------------------------
+
+-Correr el script variables.rc para exportar las variables globales.
+-checar la ruta de la base de datos que no esta relativa si no absoluta
 

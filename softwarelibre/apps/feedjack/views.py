@@ -14,8 +14,8 @@ from django.utils.cache import patch_vary_headers
 from django.template import Context, loader
 
 import models
-feedjack import fjlib
-feedjack import fjcache
+import fjlib
+import fjcache
 
 def initview(request):
     """ Retrieves the basic data needed by all feeds (host, feeds, etc)
