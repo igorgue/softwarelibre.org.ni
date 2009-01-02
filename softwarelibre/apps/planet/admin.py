@@ -1,5 +1,10 @@
 from django.contrib import admin
-from models import Feed, FeedItem
+from models import Feed, FeedItem, Tag
+
+admin.site.register(Tag, 
+        list_display = ['name'],
+        ordering = ['name'],
+        )
 
 admin.site.register(Feed, 
         list_display = ['title', 'public_url', 'is_active'],
@@ -16,3 +21,4 @@ admin.site.register(FeedItem,
         #TODO: revisar esto!
         #date_hierarchy = ['date_modified'],
         )
+
