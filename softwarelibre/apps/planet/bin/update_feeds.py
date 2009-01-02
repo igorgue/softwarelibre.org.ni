@@ -14,7 +14,7 @@ import feedparser
 LOCKFILE = "/tmp/update_feeds.lock"
 def update_feeds(verbose=False):
     from softwarelibre.apps.planet.models import Feed, FeedItem
-    for feed in Feed.objects.filter(is_defunct=False):
+    for feed in Feed.objects.filter(is_active=True):
         if verbose:
             print feed
         parsed_feed = feedparser.parse(feed.feed_url)

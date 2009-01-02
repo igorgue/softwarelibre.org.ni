@@ -77,8 +77,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'apps.registration',
-    'apps.planet',
+    'softwarelibre.apps.registration',
+    'softwarelibre.apps.planet',
+    'softwarelibre.apps.feedjack',
 )
 
 #Registration Settings
