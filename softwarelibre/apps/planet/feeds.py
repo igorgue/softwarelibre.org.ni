@@ -1,4 +1,4 @@
-from django.contrib.syndication.feeds impor Feed
+from django.contrib.syndication.feeds import Feed
 from models import FeedItem
 
 class PlanetFeed(Feed):
@@ -8,3 +8,12 @@ class PlanetFeed(Feed):
 
     def items(self):
         return FeedItem.objects.all()[:10]
+
+#class PlanetFeedAuthor(PlanetFeed):
+#    def items(self):
+#        return FeedItem.objects.filter(title__iexact = author )[:10]
+
+#class PlanetFeedTag(PlanetFeed):
+#    def items(self):
+#        return FeedItem.objects.all()[:10]
+

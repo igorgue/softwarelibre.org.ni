@@ -4,7 +4,14 @@ from os import path as os_path
 from django.contrib import admin
 admin.autodiscover()
 
+from apps.planet.feeds import PlanetFeed #, PlanetFeedTag, PlanetFeedAuthor
 import settings
+
+feeds = {
+        'planet' : PlanetFeed,
+        #'tag': PlanetFeedTag,
+        #'author': PlanetFeedAuthor,
+        }
 
 urlpatterns = patterns('',
     # Example:
@@ -18,6 +25,7 @@ urlpatterns = patterns('',
      (r'^admin/(.*)', admin.site.root),
      (r'^cuentas/', include('apps.registration.urls')),
      (r'^planeta/', include('apps.planet.urls')),
-     (r'^planetfeed/', include('apps.feedjack.urls')),
+     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+     #(r'^feeds/(p<url>.*)/(p<category>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
      (r'^archivos/(.*)$', 'django.views.static.serve', {'document_root': os_path.join(settings.MEDIA_ROOT, '..', 'media')}),
 )
