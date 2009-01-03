@@ -77,8 +77,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'softwarelibre.apps.registration',
     'softwarelibre.apps.planet',
-    'softwarelibre.apps.feedjack',
+    'softwarelibre.apps.profiles',
+    'softwarelibre.apps.answers',
+    'softwarelibre.apps.tag',
 )
 
 #Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 3
+AUTH_PROFILE_MODULE = 'softwarelibre.apps.profile.models.Profile'

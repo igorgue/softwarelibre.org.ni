@@ -1,11 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
-class Tag(models.Model):
+from softwarelibre.apps.tag.models import Tag
+
+class Category(models.Model):
     name = models.CharField(max_length = 50, unique = True)
 
     class Meta:
-        verbose_name = 'Etiqueta'
-        verbose_name_plural = 'Etiquetas'
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categoria'
         
     def __unicode__(self):
         return self.name
@@ -27,7 +30,9 @@ class FeedItem(models.Model):
     date_modified = models.DateTimeField()
     guid = models.CharField(max_length = 500, unique = True, db_index = True)
     tags = models.ManyToManyField(Tag, verbose_name = 'Etiquetas')
-    
+#TODO: revisar esto....
+    category = models.ManyToManyField(Category, verbose_name = 'Categoria')
+
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
@@ -39,3 +44,7 @@ class FeedItem(models.Model):
     def get_absolute_url(self):
         return self.link
 
+class Comment(models.Model):
+    text = models.CharField('Comentario', max_length = 500)
+    post = models.ForeignKey(FeedItem)
+    author = models.ForeignKey(User)

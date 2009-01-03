@@ -1,7 +1,14 @@
 from django.contrib import admin
-from models import Feed, FeedItem, Tag
+from models import Feed, FeedItem, Category, Comment
 
-admin.site.register(Tag, 
+admin.site.register(Comment, 
+        list_display = ['text', 'post', 'author'],
+        list_filter = ['author', 'post'],
+        ordering = ['post', 'author'],
+        search_fields = ['author'],
+        )
+
+admin.site.register(Category, 
         list_display = ['name'],
         ordering = ['name'],
         )
