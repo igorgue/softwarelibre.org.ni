@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>{%block title%}{%endblock %} - Softwarelibre.org.ni</title>
+	<link rel="stylesheet" href="/archivos/css/style.css" type="text/css">
+	{% block extra_head %}{% endblock %}
+</head>
+{% block body %}{% endblock %}
+<body>
+	<div id="header">
+		Menu y banner aca
+	</div><!-- header -->
+	<div id="content">
+		{% block content%}{% endblock%}	
+	</div/><!-- content -->
+	<div id="footer">
+		footer aca...
+	</div><!-- footer -->
+</body>
+</html>

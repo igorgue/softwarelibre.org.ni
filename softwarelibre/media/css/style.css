@@ -1,10 +1,10 @@
 /* Estilos CSS para softwarelibre.org.ni by Adolfo J. Fitoria <adolfo@fitoria.net>
  * bajo licencia WTFPL 
  * Managua, Nicaragua 2009.
+ * faltan muchas cosas por hacer es un boceto nada mas para ver el acomodo
  */
 
-body{
-}
+/* meter reglas de estilo general aca */
 
 #header{
 	width: 1024px;
@@ -17,7 +17,13 @@ body{
 	height:auto !important;
 	width: 1024px;
 	min-height: 500;
-	background: #000000;
+	background: #ffffff;
+	border-color: #000000;
+}
+
+#page-title{
+	/*agrandar fuentes ponerle fondo bonito que se yo */
+	text-decoration: underline;	
 }
 
 #opciones{
@@ -26,6 +32,15 @@ body{
 	background: #000000;
 	padding-top: 20px;
 	padding
+}
+
+#post{
+}
+
+#post-title{
+}
+
+#post-content{
 }
 
 .opcion{
@@ -46,4 +61,9 @@ body{
 	border:#e5e5e5 1px solid;
 	color:#363636;
 	font-size:11px;
+}
+
+#footer{
+	height: 100px;
+	width: 1024px;
 }

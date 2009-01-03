@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title%}{{ tag }}{% endblock %}
+
+{% block content%}
+<div id="page-title">{{tag}} </div>
+{% for post in posts %}
+<div id="post">	
+	<div id="post-title"><a href="{{post.link}}" />{{post.title}}</a></div><!-- post-title -->
+	<div id="post-content">{{post.summary|safe}}</div><!-- post-content -->
+</div><!-- post -->
+{%endfor%}
+{% endblock %}

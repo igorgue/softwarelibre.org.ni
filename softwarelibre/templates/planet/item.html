@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 
-{% block title%}Articulos de {{ author.title }}  {% endblock %}
+{% block title%}{{ post.title }}{% endblock %}
 
 {% block content%}
-<div id="page-subtitle">Mostrando las entradas de: </div>
-<div id="page-title"><a href="/planeta/perfil/{{author.title}}">{{ author.title}}</a> </div>
-{% for post in posts %}
+<div id="page-title"><a href="/planeta/autor/{{post.feed.title}}">{{post.feed.title}}</a>(<a href="#" />perfil)</a></div>
 <div id="post">	
 	<div id="post-title"><a href="/planeta/articulo/{{post.id}}" />{{post.title}}</a></div><!-- post-title -->
 	<div id="post-content">{{post.summary|safe}}</div><!-- post-content -->
 </div><!-- post -->
-{%endfor%}
 {% endblock %}
