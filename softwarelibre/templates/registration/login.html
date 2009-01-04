@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%block extra_head%} <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/planet/feeds/planet/" />{%endblock%}
+
+{% block title%}Iniciar Sesión{% endblock %}
+
+{% block content%}
+{%if error_message %}<div class="error">{{ error_message }}</div>{%endif%}
+<form action="." method ="post" id="login-form">
+Nombre de Usuario: {{ form.username }} <br/>
+Contraseña: {{ form.password }} <br/>
+<input type = "submit" value ="Iniciar Sesión" />
+<script type="text/javascript">
+	document.getElementById('id_username').focus()
+</script>
+{% endblock %}

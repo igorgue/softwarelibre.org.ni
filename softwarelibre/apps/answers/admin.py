@@ -9,8 +9,8 @@ admin.site.register(Question,
         )
 
 admin.site.register(Answer, 
-        list_display = ['text', 'author'],
-        list_filter = ['author'],
+        list_display = ['text', 'author', 'question'],
+        list_filter = ['author', 'question'],
         ordering = ['author'],
-        search_fields = ['author'],
+        search_fields = ['author', 'question'],
         )

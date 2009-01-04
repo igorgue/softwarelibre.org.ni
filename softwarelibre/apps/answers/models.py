@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 class Question(models.Model):
     text = models.CharField('Pregunta', max_length = 500)
-    author = models.ForeignKey(User)
-    
+    author = models.ForeignKey(User, verbose_name='Usuario')
+
     class Meta:
         verbose_name = 'Pregunta'
         verbose_name_plural = 'Preguntas'
@@ -15,8 +15,8 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.CharField('Repuesta', max_length = 500)
-    author = models.ForeignKey(User)
-    question = models.ForeignKey(Question)
+    author = models.ForeignKey(User, verbose_name = 'Usuario')
+    question = models.ForeignKey(Question, verbose_name = 'Pregunta')
 
     class Meta:
         verbose_name = 'Repuesta'
