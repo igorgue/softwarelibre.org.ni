@@ -94,7 +94,7 @@ class Event(models.Model):
 		
 	# @models.permalink
 	def get_absolute_url(self):
-		return u'/eventos/%s/' % self.id
+		return u'/evento/%s/' % self.id
 		
 	def has_passed(self):
 		if self.end:
