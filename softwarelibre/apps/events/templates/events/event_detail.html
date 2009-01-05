@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block content %}
+	
+	{% if event.has_passed %}
+		<p>This event is over.</p>
+	{% endif %}
+	
+	<h2>{{ event.name }}</h2>
+	<p>{{ event.date_span }}</p>
+	<p>{% if event.time %}{{ event.time}}{% endif %}</p>
+	
+	{% if event.location %}
+	<div class="event location">
+		{{ event.location|urlize|textile }}
+	</div>
+	{% endif %}
+
+	{% if event.description %}
+	<div class="event description">
+		{{ event.description|urlize|textile }}
+	</div>
+	{% endif %}
+	
+	{% if event.get_next_upcoming %}
+	<h3>Next event</h3>
+		<a href="{{ event.get_next_upcoming.get_absolute_url }}">{{ event.get_next_upcoming.name }}, {{ event.get_next_upcoming.date_span }} &rarr;</a>
+	{% endif %}
+	
+	{% if event.get_previous_upcoming %}
+	<h3>Previous event</h3>
+		<a href="{{ event.get_previous_upcoming.get_absolute_url }}">&larr; {{ event.get_previous_upcoming.name }}, {{ event.get_previous_upcoming.date_span }}</a>
+	{% endif %}
+	
+{% endblock %}

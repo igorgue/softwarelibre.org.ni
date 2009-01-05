@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/15/trunk/events/templatetags
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3/trunk/events/templatetags/__init__.py
+END
+event_tags.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/15/trunk/events/templatetags/event_tags.py
+END

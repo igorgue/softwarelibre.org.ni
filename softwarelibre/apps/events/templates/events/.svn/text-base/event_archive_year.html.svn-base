@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% if event_list %}
+	<h2>Events in {{ year }}</h2>
+		<table>
+		{% for event in event_list %}
+			<tr>
+				<th>{{ event.date_span }}</th>
+				<td><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></td>
+			</tr>
+		{% endfor %}
+		</table>
+	{% else %}	
+		<h2>There are no events in {{ year }}</h2>
+	{% endif %}
+	
+{% endblock %}

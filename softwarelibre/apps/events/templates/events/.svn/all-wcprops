@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/18/trunk/events/templates/events
+END
+event_archive_year.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3/trunk/events/templates/events/event_archive_year.html
+END
+event_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/18/trunk/events/templates/events/event_detail.html
+END
+event_archive_month.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3/trunk/events/templates/events/event_archive_month.html
+END
