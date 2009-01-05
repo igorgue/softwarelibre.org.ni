@@ -4,6 +4,8 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ADMINS = (
     ('Adolfo Fitoria', 'adolfo@fitoria.net'),
 )
@@ -11,7 +13,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = '/home/fitoria/code/softwarelibre.org.ni/softwarelibre/development.sqlite'             #cambiar este path
+DATABASE_NAME = PROJECT_DIR + '/development.sqlite'
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -36,7 +38,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_ROOT = PROJECT_DIR + '/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -80,8 +82,10 @@ INSTALLED_APPS = (
     'softwarelibre.apps.profiles',
     'softwarelibre.apps.answers',
     'softwarelibre.apps.tag',
+    'softwarelibre.apps.events',
 )
 
 #Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 3
 AUTH_PROFILE_MODULE = 'softwarelibre.apps.profile.models.Profile'
+LOGIN_REDIRECT_URL = '/planet/'

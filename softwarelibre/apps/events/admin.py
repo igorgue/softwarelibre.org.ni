@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from events.models import *
+from models import *
 
 class EventCategoryAdmin(admin.ModelAdmin):
 	list_display = ['name',]
@@ -25,13 +25,14 @@ class EventAdmin(admin.ModelAdmin):
 	date_hierarchy = 'start'
 	filter_horizontal = ['categories']
 	fieldsets = (
-		('Event info',{
-			'fields': ('name', 'start', 'description'),
+		('Info del evento',{
+			'fields': ('name', 'start', 'end', 'description', 
+                'location', 'time', 'categories'),
 		}),
-		('More options...',{
-			'classes': ['collapse'],
-			'fields': ('location', 'time', 'end', 'categories'),
-		}),
+		#('More options...',{
+		#	'classes': ['collapse'],
+		#	'fields': ('location', 'time', 'end', 'categories'),
+		#}),
 	)
 	
 	def queryset(self, request):

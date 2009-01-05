@@ -11,7 +11,7 @@ class EventCategory(models.Model):
 
 	objects = models.Manager()
 	on_site = CurrentSiteManager(field_name='sites')
-	name = models.CharField(max_length=100)
+	name = models.CharField('Nombre', max_length=100)
 	sites = models.ManyToManyField(Site)
 	
 	def site_list(self):
@@ -21,7 +21,8 @@ class EventCategory(models.Model):
 		return self.name
 		
 	class Meta:
-		verbose_name_plural = u'event categories'
+		verbose_name_plural = u'Categorias de eventos'
+		verbose_name = u'Categoria de evento'
 
 		
 class EventManager(CurrentSiteManager):	
@@ -74,17 +75,17 @@ class Event(models.Model):
 	objects = models.Manager()
 	on_site = EventManager(field_name='sites')
 	
-	name = models.CharField(max_length=250, help_text=u'Example: "Second Annual Charity Auction"')
-	description = models.TextField(blank=True,
-		help_text=u'* Optional.  Give more details on this event (items to bring, links to other sites, etc).')
-	location = models.TextField(blank=True, help_text=u"* Optional.")
-	start = models.DateField(u"Date",
-		help_text=u'Format: yyyy-mm-dd.  When does this event take place?  '
-		'If the event is longer than one day, enter the start date here and the end date below.')
-	time = models.CharField(blank=True, max_length=100, help_text=u'* Optional.  Examples: "8 am - 4 pm", "7:30 pm"')
+	name = models.CharField(max_length=250, help_text=u'Example: "Concierto de Wendy Sulca y Yahari"')
+	description = models.TextField('Descripcion', blank=True,
+		help_text=u'* Opcional.')
+	location = models.TextField('Lugar', blank=True, help_text=u"* Opcional.")
+	start = models.DateField(u"Fecha",
+            help_text=u'Formato: yyyy-mm-dd. '
+		'Si el evento tarda mas de un dia ingrese la fecha de incio y luego la de fin en el campo de abajo.')
+	time = models.CharField('Hora', blank=True, max_length=100, help_text=u'* Opcional.  Ejemplos: "8 am - 4 pm", "7:30 pm"')
 	# Todo -- continue to validate that the end is after the start?
-	end = models.DateField(u'End date', blank=True, null=True,
-		help_text=u'* Optional.  If this event is more than one day long, enter the end date here.  Defaults to "start" date if left blank.')
+	end = models.DateField(u'Fecha Final', blank=True, null=True,
+		help_text=u'* Optional. Si el evento tarda mas de un dia si no dejar en blanco.')
 	categories = models.ManyToManyField(EventCategory, blank=True, null=True, limit_choices_to={'sites__id': settings.SITE_ID})
 	sites = models.ManyToManyField(Site, editable=False, default=[settings.SITE_ID])
 	
@@ -93,8 +94,7 @@ class Event(models.Model):
 		
 	# @models.permalink
 	def get_absolute_url(self):
-		# return ('event-detail', (), {'object_id': self.id})
-		return u'/events/event-%s/' % self.id
+		return u'/eventos/%s/' % self.id
 		
 	def has_passed(self):
 		if self.end:
@@ -105,7 +105,7 @@ class Event(models.Model):
 	def category_list(self):
 		if self.categories.all():
 			return ", ".join([ c.name for c in self.categories.all() ])
-		return '(No categories)'
+		return '(No hay categorias)'
 		
 	def site_list(self):
 		return self.sites.all()
@@ -135,6 +135,7 @@ class Event(models.Model):
 	date_span.admin_order_field = 'start'
 	date_span.allow_tags = True
 
-	class Meta:
-		ordering = ('-start',)
-		
+    #class Meta:
+    #    verbose_name_plural = u'Eventos'
+    #   verbose_name = u'Evento'
+
