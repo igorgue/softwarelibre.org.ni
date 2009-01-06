@@ -3,10 +3,10 @@
 {% block title%}{{ tag }}{% endblock %}
 
 {% block content%}
-<div id="page-title">{{tag}} </div>
+<div id="page-title"><a href= "/planeta/etiqueta/{{tag}}">{{tag}}</a> </div>
 {% for post in posts %}
 <div id="post">	
-	<div id="post-title"><a href="{{post.link}}" />{{post.title}}</a></div><!-- post-title -->
+	<div id="post-title"><a href="/planeta/articulo/{{post.id}}" />{{post.title}}</a></div><!-- post-title -->
 	<div id="post-content">{{post.summary|safe}}</div><!-- post-content -->
 </div><!-- post -->
 {%endfor%}

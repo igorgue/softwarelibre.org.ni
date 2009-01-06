@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import Http404, HttpResponseRedirect
-from models import Feed, FeedItem, Tag
+from models import Feed, FeedItem, Category
+from softwarelibre.apps.tag.models import Tag
 
 def index(request):
     planet_dict = {
@@ -11,10 +12,10 @@ def index(request):
 
 def filter_by_author(request, author):
     try:
-        feed = Feed.objects.get(title__iexact=author)
+        feed = Feed.objects.get(slug = author)
         post = FeedItem.objects.filter(feed = feed)
         return render_to_response('planet/author.html',
-            {'author': feed, 'posts': post})
+                {'author': feed, 'posts': post}) #WTF is happening here?????
     except:
         raise Http404
 
@@ -24,13 +25,20 @@ def show_item(request, item):
             { 'post': post})
 
 
-def filter_by_tag(request, tag):
+def filter_by_category(request, category):
     try:
-        #post = FeedItem.objects.filter(tags= Tag.objects.filter(name__iexact = tag))
-        post = FeedItem.objects.filter(tags= tag)
-        print post
-        return render_to_response('planet/tag.html',
-                {'tag': tag, 'posts': post})
+        selected_category = Category.objects.get(name__iexact = category)
+        posts = selected_category.feeditem_set.all()
+        return render_to_response('planet/category.html',
+                {'category': selected_category, 'posts': posts})
     except:
         raise Http404
 
+def filter_by_tag(request, tag):
+    try:
+        selected_tag = Tag.objects.get(name__iexact = tag)
+        posts = selected_tag.feeditem_set.all()
+        return render_to_response('planet/tag.html',
+                {'tag': selected_tag, 'posts': posts})
+    except:
+        raise Http404

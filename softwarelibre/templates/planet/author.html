@@ -5,7 +5,7 @@
 
 {% block content%}
 <div id="page-subtitle">Mostrando las entradas de: </div>
-<div id="page-title"><a href="/planeta/perfil/{{author.title}}">{{ author.title}}</a> </div>
+<div id="page-title"> {{author.title}} </div>
 {% for post in posts %}
 <div id="post">	
 	<div id="post-title"><a href="/planeta/articulo/{{post.id}}" />{{post.title}}</a></div><!-- post-title -->

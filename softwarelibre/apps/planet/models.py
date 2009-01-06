@@ -14,24 +14,28 @@ class Category(models.Model):
         return self.name
 
 class Feed(models.Model):
-    title = models.CharField(max_length = 500)
-    feed_url = models.URLField(unique = True, max_length = 500)
-    public_url = models.URLField(max_length = 500)
-    is_active = models.BooleanField(default = True)
+    title = models.CharField('Titulo', max_length = 500)
+    slug = models.SlugField('url amigable', unique = True)
+    feed_url = models.URLField('url del feed', unique = True, max_length = 500)
+    public_url = models.URLField('url publica', max_length = 500)
+    is_active = models.BooleanField('Activo?', default = True)
 
     def __unicode__(self):
         return self.title
+    def get_absolute_url(self):
+        return '/planeta/autor/%s' % self.slug
 
 class FeedItem(models.Model):
-    feed = models.ForeignKey(Feed)
-    title = models.CharField(max_length = 500)
+    feed = models.ForeignKey( Feed)
+    title = models.CharField('Titulo', max_length = 500)
     link = models.URLField(max_length = 500)
-    summary = models.TextField(blank = True)
-    date_modified = models.DateTimeField()
+    summary = models.TextField('Contenido', blank = True)
+    date_modified = models.DateTimeField('fecha')
     guid = models.CharField(max_length = 500, unique = True, db_index = True)
-    tags = models.ManyToManyField(Tag, verbose_name = 'Etiquetas')
+    tags = models.ManyToManyField(Tag, verbose_name = 'Etiquetas', blank = True)
 #TODO: revisar esto....
-    category = models.ManyToManyField(Category, verbose_name = 'Categoria')
+    category = models.ManyToManyField(Category, verbose_name = 'Categoria', 
+            blank = True, null = True)
 
     class Meta:
         verbose_name = 'Post'
@@ -42,9 +46,16 @@ class FeedItem(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return self.link
+        return '/planeta/articulo/%d' % self.id
 
 class Comment(models.Model):
     text = models.CharField('Comentario', max_length = 500)
     post = models.ForeignKey(FeedItem)
     author = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = 'comentario'
+        verbose_name_plural = 'comentarios'

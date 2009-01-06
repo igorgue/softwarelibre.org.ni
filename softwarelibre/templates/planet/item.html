@@ -3,7 +3,7 @@
 {% block title%}{{ post.title }}{% endblock %}
 
 {% block content%}
-<div id="page-title"><a href="/planeta/autor/{{post.feed.title}}">{{post.feed.title}}</a>(<a href="#" />perfil)</a></div>
+<div id="page-title"><a href="/planeta/autor/{{post.feed.slug}}">{{post.feed.title}}</a>(<a href="#" />perfil)</a></div>
 <div id="post">	
 	<div id="post-title"><a href="/planeta/articulo/{{post.id}}" />{{post.title}}</a></div><!-- post-title -->
 	<div id="post-content">{{post.summary|safe}}</div><!-- post-content -->
