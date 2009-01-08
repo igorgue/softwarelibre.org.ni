@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{%block extra_head%} <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/planet/feeds/planet/" />{%endblock%}
+
+{% block title%}Cree una cuenta.{% endblock %}
+
+{% block content%}
+{%if error_message %}<div class="error">{{ error_message }}</div>{%endif%}
+      <h1>Cree una cuenta.</h1>
+      <form action="." method="post">
+        {% if form.error_dict %}
+          <p class="error">Favor corrija los errores.</p>
+        {% endif %}
+
+        {% if form.username.errors %}
+          {{ form.username.html_error_list }}
+        {% endif %}
+		<label for="id_username">Nombre de Usuario:</label> {{ form.username }}<br/>
+
+        {% if form.email.errors %}
+          {{ form.email.html_error_list }}
+        {% endif %}
+		<label for="id_password2">Correo Electrónico: {{ form.email }}<br/>
+		   
+		{% if form.password1.errors %}
+          {{ form.password1.html_error_list }}
+        {% endif %}
+		<label for="id_password1">Contraseña: {{ form.password1 }}<br/>
+
+        {% if form.password2.errors %}
+          {{ form.password2.html_error_list }}
+        {% endif %}
+		<label for="id_password2">Confirmar Contraseña: {{ form.password2 }}<br/>
+
+        <input type="submit" value="Crear" />
+      </label>
+
+{% endblock %}

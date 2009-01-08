@@ -87,5 +87,8 @@ INSTALLED_APPS = (
 
 #Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 3
-AUTH_PROFILE_MODULE = 'softwarelibre.apps.profile.models.Profile'
+AUTH_PROFILE_MODULE = 'profiles.UserProfile'
 LOGIN_REDIRECT_URL = '/planet/'
+
+EMAIL_SETTINGS = {"from": "noresponder@softwarelibre.org.ni", "subject": "notificacion del sitio", "signature": "BNKiller.com"}
+
