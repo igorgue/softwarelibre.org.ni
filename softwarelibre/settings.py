@@ -81,8 +81,6 @@ INSTALLED_APPS = (
     'softwarelibre.apps.planet',
     'softwarelibre.apps.profiles',
     'softwarelibre.apps.answers',
-    'softwarelibre.apps.tag',
-    'softwarelibre.apps.events',
 )
 
 #Registration Settings
