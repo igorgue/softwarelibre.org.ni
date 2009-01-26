@@ -6,7 +6,7 @@ class Question(models.Model):
     title = models.CharField('Titulo', max_length = 100)
     text = models.TextField('Pregunta')
     author = models.ForeignKey(User, verbose_name='Usuario')
-    correct_answer = models.ForeignKey('Answer', blank = True, null = True)
+    correct_answer = models.ForeignKey('answers.Answer', blank = True, null = True, related_name = 'correct_answer')
     tags = TagField(verbose_name = 'Etiquetas', help_text = 'Ponga las etiquetas separadas por coma')    
 
     class Meta:
