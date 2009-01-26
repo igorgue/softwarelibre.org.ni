@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User 
 
-from softwarelibre.apps.tag.models import Tag
+from apps.tagging.fields import TagField
 
 class Category(models.Model):
     name = models.CharField(max_length = 50, unique = True)
@@ -32,7 +32,7 @@ class FeedItem(models.Model):
     summary = models.TextField('Contenido', blank = True)
     date_modified = models.DateTimeField('fecha')
     guid = models.CharField(max_length = 500, unique = True, db_index = True)
-    tags = models.ManyToManyField(Tag, verbose_name = 'Etiquetas', blank = True)
+    tags = TagField(verbose_name = 'Etiquetas')
 #TODO: revisar esto....
     category = models.ManyToManyField(Category, verbose_name = 'Categoria', 
             blank = True, null = True)

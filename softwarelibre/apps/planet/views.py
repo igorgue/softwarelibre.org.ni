@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import Http404, HttpResponseRedirect
 from models import Feed, FeedItem, Category
-from softwarelibre.apps.tag.models import Tag
 
 def index(request):
     planet_dict = {
@@ -31,14 +30,5 @@ def filter_by_category(request, category):
         posts = selected_category.feeditem_set.all()
         return render_to_response('planet/category.html',
                 {'category': selected_category, 'posts': posts})
-    except:
-        raise Http404
-
-def filter_by_tag(request, tag):
-    try:
-        selected_tag = Tag.objects.get(name__iexact = tag)
-        posts = selected_tag.feeditem_set.all()
-        return render_to_response('planet/tag.html',
-                {'tag': selected_tag, 'posts': posts})
     except:
         raise Http404
