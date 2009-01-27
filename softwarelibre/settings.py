@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'softwarelibre.apps.registration',
     'softwarelibre.apps.planet',
     'softwarelibre.apps.profiles',
+    'softwarelibre.apps.tagging',
     'softwarelibre.apps.answers',
 )
 
