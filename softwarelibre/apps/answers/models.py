@@ -25,7 +25,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    text = models.CharField('Repuesta', max_length = 500)
+    text = models.TextField('Repuesta')
     author = models.ForeignKey(User, verbose_name = 'Usuario')
     question = models.ForeignKey(Question, verbose_name = 'Pregunta')
 
