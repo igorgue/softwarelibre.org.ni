@@ -1,4 +1,4 @@
-===================softwarelibre.org.ni=======================
++=================softwarelibre.org.ni=======================
 
 1. Introducción.
 2. Autores.
@@ -16,10 +16,9 @@ se contará con diversas funcionalidades.
 Adolfo Jurgen Fitoria Escobar <adolfo@fitoria.net>
 
 ---------------- 3. TODO ---------------------------------
-Todo falta por hacer.
+Agregar CSS e Imágenes.
+Completar templates.
 
 ---------------- 4. Notas ---------------------------------
-
--Correr el script variables.rc para exportar las variables globales.
--checar la ruta de la base de datos que no esta relativa si no absoluta
+-Correr el script variables.rc para exportar las variables globales(actualizar planet).
 
