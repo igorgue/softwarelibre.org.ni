@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title%}Hacer Pregunta{% endblock %}
+
+{% block content%}
+Pregunte:
+{%if form%}
+	<form action="/soporte/pregunta/nueva/" method = "POST">
+		{{form.as_p}}
+		<input type="Submit" value="Preguntar"/>
+	</form>
+{%endif%}
+{% endblock %}

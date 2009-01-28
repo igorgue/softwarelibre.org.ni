@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title%}Preguntas{% endblock %}
+
+{% block content%}
+	{%for question in questions.object_list %}
+		<a href="{{question.get_absolute_url}}">{{question.title}}</a></br>	
+	{%endfor%}
+{% endblock %}

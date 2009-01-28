@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title%}{{question.title}}{% endblock %}
+
+{% block content%}
+{{question.author.username|title}} pregunta:<br/>
+<a href="{{question.get_absolute_url}}">{{question.title|capfirst}}</a><br/>	
+{{question.text|striptags|urlize}}<br/>
+<br/>
+Repuestas<br/>
+{%for answer in answers.object_list%}
+	{{answer.author.username|title}} respondió:<br/>
+	{{answer.text|striptags|urlize}} <br/> <br/>
+{%endfor%}
+{%if form%}
+	<form action="/soporte/pregunta/{{question.id}}/responder" method = "POST">
+		{{form.as_p}}
+		<input type="Submit" value="Responder"/>
+	</form>
+{%endif%}
+{% endblock %}

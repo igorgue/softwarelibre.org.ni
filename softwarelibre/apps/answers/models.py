@@ -23,6 +23,9 @@ class Question(models.Model):
         else:
             return False
 
+    def get_absolute_url(self):
+        return '/soporte/pregunta/%d' % self.id
+
 
 class Answer(models.Model):
     text = models.TextField('Repuesta')
