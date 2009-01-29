@@ -3,6 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404, render_to_response
 from models import Question, Answer, Votes
 from forms import QuestionForm, AnswerForm
+from apps.tagging.models import TaggedItem, Tag
 
 def index(request):
     question_list = Question.objects.all()
@@ -111,3 +112,21 @@ def vote_down(request, answer_id):
         return HttpResponseRedirect('/soporte/pregunta/' + str(question_id))
     else:
         return HttpResponseRedirect('/cuentas/login')
+
+def filter_question_by_tag(request, tag):
+    selected_tag = get_object_or_404(Tag, name = tag)
+    question_list = TaggedItem.objects.get_by_model(Question, selected_tag)
+    paginator = Paginator(question_list, 40)
+    
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        questions = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        questions = paginator.page(paginator.num_pages)
+
+    return render_to_response('answers/filter_by_tag.html',
+            {'questions': questions})
