@@ -1,0 +1,9 @@
+*.pyc
+*.swp
+*.swo
+.DS_Store
+*.db
+.svn
+*~
+/tags
+development.sqlite

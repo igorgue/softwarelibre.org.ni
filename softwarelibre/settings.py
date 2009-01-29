@@ -1,5 +1,6 @@
 # Django settings for softwarelibre project.
 import os
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,7 +9,20 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (
     ('Adolfo Fitoria', 'adolfo@fitoria.net'),
+    ('Igor Guerrero', 'igfgt1@gmail.com'),
 )
+
+# adding the apps dir to the path
+APPS_DIR = PROJECT_DIR + '/apps'
+APPS_PATH_COUNT = sys.path.count(APPS_DIR)
+
+if APPS_PATH_COUNT == 0:
+    sys.path.insert(1, PROJECT_DIR + '/apps')
+else:
+    for i in range(0, APPS_PATH_COUNT):
+        sys.path.remove(APPS_DIR)
+    sys.path.insert(1, PROJECT_DIR + '/apps')
+
 
 MANAGERS = ADMINS
 
@@ -68,7 +82,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'softwarelibre.urls'
 
-TEMPLATE_DIRS = ("/home/fitoria/code/softwarelibre.org.ni/softwarelibre/templates",
+TEMPLATE_DIRS = (
+    PROJECT_DIR + "/templates",
 )
 
 INSTALLED_APPS = (
@@ -89,5 +104,5 @@ ACCOUNT_ACTIVATION_DAYS = 3
 AUTH_PROFILE_MODULE = 'profiles.UserProfile'
 LOGIN_REDIRECT_URL = '/planet/'
 
-EMAIL_SETTINGS = {"from": "noresponder@softwarelibre.org.ni", "subject": "notificacion del sitio", "signature": "BNKiller.com"}
+EMAIL_SETTINGS = {"from": "noresponder@softwarelibre.org.ni", "subject": "notificacion del sitio", "signature": "Software Libre Nicaragua"}
 
