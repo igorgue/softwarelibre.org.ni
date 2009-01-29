@@ -9,6 +9,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (
     ('Adolfo Fitoria', 'adolfo@fitoria.net'),
+    ('Igor Guerrero', 'igfgt1@gmail.com'),
 )
 
 # adding the apps dir to the path
