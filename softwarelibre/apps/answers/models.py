@@ -41,23 +41,23 @@ class Answer(models.Model):
     
     @property
     def positive_votes(self):
-        votes = Votes.objects.filter(answer = self, vote = 'Buena')
+        votes = Votes.objects.filter(answer = self, vote = 'Up')
         return len(votes)
     
     @property
     def negative_votes(self):
-        votes = Votes.objects.filter(answer = self, vote = 'Mala')
+        votes = Votes.objects.filter(answer = self, vote = 'Down')
         return len(votes)
 
 class Votes(models.Model):
     answer = models.ForeignKey(Answer, verbose_name = 'Repuesta')
     author = models.ForeignKey(User, verbose_name = 'Usuario')
     vote = models.CharField('Voto', max_length = 20,
-            choices = (('Buena', 'Buena'),('Mala', 'Mala')))
+            choices = (('Up', 'Up'),('Down', 'Down')))
     
     class Meta:
         verbose_name = 'Voto'
         verbose_name_plural = 'Votos'
 
     def __str__(self):
-        return "%s - %s (%s)" % self.answer, self.vote, self.author
+        return "%s - %s (%s)" % (self.answer, self.vote, self.author)

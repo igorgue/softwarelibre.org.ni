@@ -9,7 +9,8 @@
 Repuestas<br/>
 {%for answer in answers.object_list%}
 	{{answer.author.username|title}} respondió:<br/>
-	{{answer.text|striptags|urlize}} <br/> <br/>
+	{{answer.text|striptags|urlize}} <br/> 
+	Votos Positivos: {{answer.positive_votes}} | Votos Negativos: {{answer.negative_votes}}<br/> <br/>
 {%endfor%}
 {%if form%}
 	<form action="/soporte/pregunta/{{question.id}}/responder" method = "POST">

@@ -81,3 +81,33 @@ def answer_question(request, question_id):
                 pass #TODO: validar cuando el formulario de errores.
     else:
         return HttpResponseRedirect('/cuentas/login')
+
+def vote_up(request, answer_id):
+    if request.user.is_authenticated():
+        answer = Answer.objects.get(id = answer_id)
+        votos = Votes.objects.filter(author = request.user, answer = answer)
+        question_id = answer.question.id       
+        if len(votos) == 0:
+            voto = Votes(answer = answer, author = request.user, vote = 'Up')
+            voto.save()
+        else:
+            pass #TODO mandar un mensaje de que ya voto.
+            #request.session['message'] = 'Usted ya ha votado por esta repuesta.' 
+        return HttpResponseRedirect('/soporte/pregunta/' + str(question_id))
+    else:
+        return HttpResponseRedirect('/cuentas/login')
+
+def vote_down(request, answer_id):
+    if request.user.is_authenticated():
+        answer = Answer.objects.get(id = answer_id)
+        question_id = answer.question.id       
+        votos = Votes.objects.filter(author = request.user, answer = answer)
+        if len(votos) == 0:
+            voto = Votes(answer = answer, author = request.user, vote = 'Down')
+            voto.save()
+        else:
+            pass #TODO mandar un mensaje de que ya voto.
+            #request.session['message'] = 'Usted ya ha votado por esta repuesta.' 
+        return HttpResponseRedirect('/soporte/pregunta/' + str(question_id))
+    else:
+        return HttpResponseRedirect('/cuentas/login')
