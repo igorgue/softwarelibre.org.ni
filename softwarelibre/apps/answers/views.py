@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, get_list_or_404, render_to_response
+from django.template import RequestContext
+
 from models import Question, Answer, Votes
 from forms import QuestionForm, AnswerForm
 
@@ -42,7 +44,7 @@ def view_question(request, question_id):
         form = None
 
     dict = {'question': question, 'answers': answers, 'form': form}
-    return render_to_response('answers/view_question.html', dict)
+    return render_to_response('answers/view_question.html', RequestContext(request, dict))
 
 def ask_question(request):
     if request.user.is_authenticated():
