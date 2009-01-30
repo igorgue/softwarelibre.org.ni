@@ -9,8 +9,18 @@
 Repuestas<br/>
 {%for answer in answers.object_list%}
 	{{answer.author.username|title}} respondió:<br/>
-	{{answer.text|striptags|urlize}} <br/> 
+	{{answer.text|striptags|urlize}} <br/> <br/>
 	Votos Positivos: {{answer.positive_votes}} | Votos Negativos: {{answer.negative_votes}}<br/> <br/>
+    <p>username = {{ user.id }}</p>
+    {% if user.is_authenticated %}
+        <p>users: {{ user.id }} {{ question.author.id }}</p>
+        {% ifequal user.id question.author.id %}
+        <form action="/soporte/correcta" method="POST">
+            <input type="hidden" value"{{ question.pk }}" />
+            <p><input type="submit" value="Correcta! &rarr;" /></p>
+        </form>
+        {% endifequal %}
+    {% endif %}
 {%endfor%}
 {%if form%}
 	<form action="/soporte/pregunta/{{question.id}}/responder" method = "POST">
